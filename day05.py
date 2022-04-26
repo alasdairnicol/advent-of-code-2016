@@ -2,7 +2,6 @@
 import itertools
 import hashlib
 from typing import Generator
-from collections import Counter
 
 
 def complete(part_a, part_b):

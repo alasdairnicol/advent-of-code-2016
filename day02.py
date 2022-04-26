@@ -131,7 +131,7 @@ def main():
 
 def get_code(instructions, next_button):
     digits = []
-    button = '5'
+    button = "5"
     for instruction in instructions:
         for movement in instruction:
             button = next_button[movement][button]

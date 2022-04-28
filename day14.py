@@ -6,10 +6,6 @@ from re import L
 from typing import Generator
 
 
-def complete(part_a, part_b):
-    return len(part_a) == 8 and "_" not in part_b
-
-
 @functools.lru_cache(maxsize=None)
 def gen_key(salt, num, num_hashes=1):
     digest = f"{salt}{num}"

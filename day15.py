@@ -6,12 +6,15 @@ import math
 def parse_discs(lines):
     discs = []
     for i, line in enumerate(lines, 1):
-        words = line.rstrip('.').split()
+        words = line.rstrip(".").split()
         num_positions = int(words[3])
         initial_position = int(words[-1])
-        remainder = (num_positions - ((initial_position + i ) % num_positions)) % num_positions
+        remainder = (
+            num_positions - ((initial_position + i) % num_positions)
+        ) % num_positions
         discs.append((num_positions, remainder))
     return discs
+
 
 def find_starting_time(discs):
     t = 0
@@ -19,7 +22,9 @@ def find_starting_time(discs):
     for num_positions, remainder in discs:
         while t % num_positions != remainder:
             t += step
-        step = (step * num_positions) // math.gcd(step, num_positions)  # use math.lcm in Python 3.9+
+        step = (step * num_positions) // math.gcd(
+            step, num_positions
+        )  # use math.lcm in Python 3.9+
     return t
 
 
@@ -31,7 +36,7 @@ def main():
     discs = parse_discs(lines)
 
     # Exclude final disc, it's only for part b
-    part_a = find_starting_time(discs[:-1])  
+    part_a = find_starting_time(discs[:-1])
     print(f"{part_a=}")
 
     part_b = find_starting_time(discs)

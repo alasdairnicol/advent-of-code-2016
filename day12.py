@@ -1,31 +1,5 @@
 #!/usr/bin/env python
 from typing import Generator
-import math
-
-
-def parse_discs(lines):
-    discs = []
-    for i, line in enumerate(lines, 1):
-        words = line.rstrip(".").split()
-        num_positions = int(words[3])
-        initial_position = int(words[-1])
-        remainder = (
-            num_positions - ((initial_position + i) % num_positions)
-        ) % num_positions
-        discs.append((num_positions, remainder))
-    return discs
-
-
-def find_starting_time(discs):
-    t = 0
-    step = 1
-    for num_positions, remainder in discs:
-        while t % num_positions != remainder:
-            t += step
-        step = (step * num_positions) // math.gcd(
-            step, num_positions
-        )  # use math.lcm in Python 3.9+
-    return t
 
 
 def cpy(registers, location, x, y):
@@ -67,14 +41,6 @@ def parse_line(line):
 
 def main():
     lines = list(read_input())
-    # lines = [
-    #     "cpy 41 a",
-    #     "inc a",
-    #     "inc a",
-    #     "dec a",
-    #     "jnz a 2",
-    #     "dec a",
-    # ]
     instructions = [parse_line(line) for line in lines]
 
     part_a = run_program(instructions, c=0)

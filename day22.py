@@ -93,7 +93,7 @@ def main():
 
     moves = []
 
-    # To count number of moves, consider the following example, where _ is the empty node,
+    # To find the minimum number of moves, consider the following example, where _ is the empty node,
     # G is the target data, and # are large nodes.
     #
     # .......G

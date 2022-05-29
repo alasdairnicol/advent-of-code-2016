@@ -35,18 +35,12 @@ class Computer:
         else:
             self.location += 1
 
-    def skp(self):
-        self.location += 1
-
     def add(self, x, y):
         self.registers[y] += self.registers[x]
-        self.registers[x] = 0
         self.location += 1
 
     def mul(self, x, y):
         self.registers[y] *= self.registers.get(x, x)
-        if x in self.registers:
-            self.registers[x] = 0
         self.location += 1
 
     def tgl(self, x):
@@ -92,9 +86,9 @@ def main():
     lines[5:10] = [
         "mul d c",
         "add c a",
-        "skp",
-        "skp",
-        "skp",
+        "cpy 0 c",
+        "cpy 0 d",
+        "jnz 0 0",  # no-op
     ]
 
     instructions = [parse_line(line) for line in lines]

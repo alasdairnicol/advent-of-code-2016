@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from typing import Generator
-import math
 
 
 class Computer:
@@ -35,6 +34,20 @@ class Computer:
             self.location += self.registers.get(y, y)
         else:
             self.location += 1
+
+    def skp(self):
+        self.location += 1
+
+    def add(self, x, y):
+        self.registers[y] += self.registers[x]
+        self.registers[x] = 0
+        self.location += 1
+
+    def mul(self, x, y):
+        self.registers[y] *= self.registers.get(x, x)
+        if x in self.registers:
+            self.registers[x] = 0
+        self.location += 1
 
     def tgl(self, x):
         tgl_location = self.location + self.registers.get(x, x)
@@ -74,28 +87,22 @@ def parse_line(line):
 
 def main():
     lines = list(read_input())
-    # lines = [
-    #     "cpy 2 a",
-    #     "tgl a",
-    #     "tgl a",
-    #     "tgl a",
-    #     "cpy 1 a",
-    #     "dec a",
-    #     "dec a",
-    # ]
 
-    # computer = Computer(instructions, a=12)
-    # part_b = run_program(computer)
-    # print(f"{part_b=}")
+    # Replace instructions with mult to avoid nested loops
+    lines[5:10] = [
+        "mul d c",
+        "add c a",
+        "skp",
+        "skp",
+        "skp",
+    ]
 
     instructions = [parse_line(line) for line in lines]
-    print(instructions)
     computer = Computer(instructions, a=7)
     part_a = run_program(computer)
     print(f"{part_a=}")
 
     instructions = [parse_line(line) for line in lines]
-    print(instructions)
     computer = Computer(instructions, a=12)
     part_b = run_program(computer)
     print(f"{part_b=}")
@@ -104,9 +111,6 @@ def main():
 def run_program(computer):
     while computer.location < len(computer.instructions):
         computer.do_instruction()
-        # print(computer.location)
-        # print(computer.registers)
-        # print(computer.instructions)
 
     return computer.registers["a"]
 

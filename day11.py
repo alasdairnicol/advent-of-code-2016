@@ -111,16 +111,28 @@ def main():
     part_a = minimum_number_of_steps(layout_a)
     print(f"{part_a=}")
 
-    layout_b = FloorLayout(
-        1,
-        floor_1=layout_a.floor_1 | frozenset(["ELG", "ELM", "DIG", "DIM"]),
-        floor_2=layout_a.floor_2,
-        floor_3=layout_a.floor_3,
-        floor_4=layout_a.floor_4,
-    )
-
-    part_b = minimum_number_of_steps(layout_b)
+    part_b = do_part_b(part_a)
     print(f"{part_b=}")
+
+
+def do_part_b(part_a):
+    layout_1_generator = FloorLayout(
+        1, frozenset(["XXG", "XXM"]), frozenset(), frozenset(), frozenset()
+    )
+    layout_2_generators = FloorLayout(
+        1,
+        frozenset(["XXG", "XXM", "YYG", "YYM"]),
+        frozenset(),
+        frozenset(),
+        frozenset(),
+    )
+    num_steps_one_generator = minimum_number_of_steps(layout_1_generator)
+    num_steps_two_generators = minimum_number_of_steps(layout_2_generators)
+    # This is the number of extra steps for each extra generator
+    diff = num_steps_two_generators - num_steps_one_generator
+
+    # In part b there are two extra generators
+    return part_a + 2 * diff
 
 
 def minimum_number_of_steps(layout):

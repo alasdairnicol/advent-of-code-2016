@@ -41,8 +41,15 @@ def main():
     part_a = do_part_a(num_elves)
     print(f"{part_a=}")
 
-    part_b = do_part_b(num_elves)
-    print(f"{part_b=}")
+    # part_b = do_part_b(num_elves)
+    # print(f"{part_b=}")
+
+    # Look for the pattern
+    for x in range(1, 100001):
+        if x == do_part_b(x):
+            print(x, do_part_b(x))
+
+
 
 
 def read_input() -> int:

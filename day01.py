@@ -34,7 +34,7 @@ def do_part_a(instructions):
         elif turn == "R":
             direction = turn_right(direction)
         else:
-            raise ValueError("Invalid turn".format(turn))
+            raise ValueError(f"Invalid turn {turn}")
 
         position = (
             position[0] + int(blocks) * direction[0],
@@ -57,7 +57,7 @@ def do_part_b(instructions):
         elif turn == "R":
             direction = turn_right(direction)
         else:
-            raise ValueError("Invalid turn".format(turn))
+            raise ValueError(f"Invalid turn {turn}")
 
         for step in range(1, blocks + 1):
             position = (
@@ -70,7 +70,7 @@ def do_part_b(instructions):
             visited.add(position)
 
 
-def read_input() -> Generator[int, None, None]:
+def read_input() -> Generator[str, None, None]:
     with open("day01.txt") as f:
         return (x.strip() for x in f.read().split(","))
 

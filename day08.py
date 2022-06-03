@@ -44,7 +44,7 @@ def main():
     part_a = len(grid)
     print(f"{part_a=}")
 
-    print(f"part_b:")
+    print("part_b:")
     draw_grid(grid)
 
 

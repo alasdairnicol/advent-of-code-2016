@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-import itertools
-import hashlib
 from typing import Tuple
 from collections import Counter
 

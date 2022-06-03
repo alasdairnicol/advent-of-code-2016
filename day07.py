@@ -1,8 +1,5 @@
 #!/usr/bin/env python
-import itertools
-import hashlib
 from typing import Generator
-from collections import Counter
 
 
 def contains_abba(word):

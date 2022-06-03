@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-import itertools
 import hashlib
-from typing import Generator
 
 
 def complete(part_a, part_b):

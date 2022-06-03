@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-import functools
-import hashlib
-from re import L
 
 
 def do_part_a(num_elves):

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import itertools
 import re
 from typing import Generator
 from collections import Counter
@@ -39,7 +38,7 @@ def main():
     for room in valid_rooms:
         name = room[0]
         number = int(room[1])
-        decrypted = "".join(shift(l, number) for l in name)
+        decrypted = "".join(shift(letter, number) for letter in name)
 
         if "north" in decrypted and "pole" in decrypted:
             part_b = number

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from dataclasses import dataclass
 import itertools
-from math import floor
 from typing import Generator
 
 

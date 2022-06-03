@@ -93,8 +93,8 @@ def main():
 
     moves = []
 
-    # To find the minimum number of moves, consider the following example, where _ is the empty node,
-    # G is the target data, and # are large nodes.
+    # To find the minimum number of moves, consider the following example,
+    # where _ is the empty node, G is the target data, and # are large nodes.
     #
     # .......G
     # ........
@@ -104,7 +104,8 @@ def main():
     # ........
     # ......_.
     #
-    # 1. First we'll move the empty node (_) to A so that it's left of all the large nodes
+    # 1. First we'll move the empty node (_) to A so that it's to the left of
+    # all the large nodes
     #
     # .......G
     # ........

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from typing import Generator
 
 
 def main():

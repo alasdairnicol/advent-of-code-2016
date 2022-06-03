@@ -48,7 +48,7 @@ def main():
     draw_grid(grid)
 
 
-def read_input() -> Generator[int, None, None]:
+def read_input() -> Generator[str, None, None]:
     with open("day08.txt") as f:
         return (line.strip() for line in f.readlines())
 

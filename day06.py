@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import itertools
 import hashlib
-from typing import Generator
+from typing import Tuple
 from collections import Counter
 
 
@@ -18,7 +18,7 @@ def main():
     print(f"{part_b=}")
 
 
-def read_input() -> Generator[int, None, None]:
+def read_input() -> zip[Tuple[str, ...]]:
     with open("day06.txt") as f:
         return zip(*(line.strip() for line in f.readlines()))
 

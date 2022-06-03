@@ -56,7 +56,7 @@ def main():
     print(f"{part_b=}")
 
 
-def read_input() -> str:
+def read_input() -> int:
     with open("day13.txt") as f:
         return int(f.read())
 

@@ -1,12 +1,6 @@
 #!/usr/bin/env python
-import itertools
 from typing import Generator
 
-"""
-1 2 3
-4 5 6
-7 8 9
-"""
 
 next_button_9 = {
     "U": {
@@ -140,7 +134,7 @@ def get_code(instructions, next_button):
     return "".join(digits)
 
 
-def read_input() -> Generator[int, None, None]:
+def read_input() -> Generator[str, None, None]:
     with open("day02.txt") as f:
         return (x.strip() for x in f.readlines())
 

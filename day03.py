@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 import itertools
-from typing import Generator
-
-"""
-1 2 3
-4 5 6
-7 8 9
-"""
+from typing import Generator, List
 
 
 def is_valid_triangle(triangle):
@@ -40,7 +34,7 @@ def do_part_b(lines):
     return len(valid_triangles)
 
 
-def read_input() -> Generator[int, None, None]:
+def read_input() -> Generator[List[int], None, None]:
     with open("day03.txt") as f:
         return ([int(x) for x in line.split()] for line in f.readlines())
 

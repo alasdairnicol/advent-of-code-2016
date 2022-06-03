@@ -69,7 +69,7 @@ def expanded_length(input_string):
     return length
 
 
-def read_input() -> Generator[int, None, None]:
+def read_input() -> str:
     with open("day09.txt") as f:
         return f.read().replace(" ", "").replace("\n", "")
 

@@ -50,8 +50,6 @@ def main():
             print(x, do_part_b(x))
 
 
-
-
 def read_input() -> int:
     with open("day19.txt") as f:
         return int(f.read().strip())

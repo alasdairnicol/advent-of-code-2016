@@ -21,16 +21,15 @@ def do_part_b_two_deques(num_elves):
     elves = range(1, num_elves + 1)
     left = deque(elves[0 : num_elves // 2])
     right = deque(elves[num_elves // 2 :])
-    while right:
-        if len(left) > len(right):
-            # remove elf
-            left.pop()
-        else:
-            right.popleft()
-        # move current elf to right hand side
+    while left:
+        # remove elf:
+        right.popleft()
+        # rotate elf that just played
         right.append(left.popleft())
-        left.append(right.popleft())
-    return left[0]
+        # rebalance every other turn
+        if len(right) - len(left) == 2:
+            left.append(right.popleft())
+    return right[0]
 
 
 def calc_part_b(num_elves):

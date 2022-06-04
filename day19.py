@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from collections import deque
 
 
 def next_round_a(elves):
@@ -16,24 +17,23 @@ def do_part_a(num_elves):
     return elves[0]
 
 
-def brute_force_part_b(num_elves):
-    """Warning: This brute force approach is slow!"""
-    elves = list(range(1, num_elves + 1))
-    position = 0
+def do_part_b_two_deques(num_elves):
+    elves = range(1, num_elves + 1)
+    left = deque(elves[0 : num_elves // 2])
+    right = deque(elves[num_elves // 2 :])
+    while right:
+        if len(left) > len(right):
+            # remove elf
+            left.pop()
+        else:
+            right.popleft()
+        # move current elf to right hand side
+        right.append(left.popleft())
+        left.append(right.popleft())
+    return left[0]
 
-    while num_elves > 1:
-        index = (position + num_elves // 2) % num_elves
-        del elves[index]
-        num_elves -= 1
-        # Increment position if removed elf is further round the circle
-        if index > position:
-            position = position + 1
-        # loop back to beginning of circle if required
-        position = position % num_elves
-    return elves[0]
 
-
-def do_part_b(num_elves):
+def calc_part_b(num_elves):
     power_of_three = 1
     while 3 * power_of_three <= num_elves:
         power_of_three *= 3
@@ -54,7 +54,7 @@ def main():
     part_a = do_part_a(num_elves)
     print(f"{part_a=}")
 
-    part_b = do_part_b(num_elves)
+    part_b = do_part_b_two_deques(num_elves)
     print(f"{part_b=}")
 
 

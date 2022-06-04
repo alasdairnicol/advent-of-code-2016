@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from typing import Tuple
+from typing import Tuple, Iterator
 from collections import Counter
 
 
@@ -16,7 +16,7 @@ def main():
     print(f"{part_b=}")
 
 
-def read_input() -> zip[Tuple[str, ...]]:
+def read_input() -> Iterator[Tuple[str, ...]]:
     with open("day06.txt") as f:
         return zip(*(line.strip() for line in f.readlines()))
 

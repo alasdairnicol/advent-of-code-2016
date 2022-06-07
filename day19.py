@@ -22,10 +22,10 @@ def do_part_a(num_elves):
     """
     Solve using solution to the Josephus Problem
     """
-    # Find l where num_elves = 2**a + l
+    # Find remainder where num_elves = 2**a + remainder
     a = highest_power_of_two(num_elves)
-    l = num_elves - a
-    return 2 * l + 1
+    remainder = num_elves - a
+    return 2 * remainder + 1
 
 
 def do_part_a_alternative(num_elves):

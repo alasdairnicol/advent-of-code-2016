@@ -128,7 +128,7 @@ def main():
 
     part_a = len(grid)
     print(f"{part_a=}")
-    part_b = "".join(letters_dict.get(l, "?") for l in split_grid(grid))
+    part_b = "".join(letters_dict.get(points, "?") for points in split_grid(grid))
     print(f"{part_b=}")
 
 

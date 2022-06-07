@@ -9,12 +9,34 @@ def next_round_a(elves):
     last_place = [elves[-1]] if len(elves) % 2 else []
     return last_place + elves[0:-1:2]
 
+def highest_power_of_two(x):
+    a = 1
+    while x > 1:
+        a <<= 1
+        x >>= 1
+    return a
 
 def do_part_a(num_elves):
-    elves = list(range(1, num_elves + 1))
-    while len(elves) > 1:
-        elves = next_round_a(elves)
-    return elves[0]
+    """
+    Solve using solution to the Josephus Problem
+    """
+    # Find l where num_elves = 2**a + l
+    a = highest_power_of_two(num_elves)
+    l = num_elves - a
+    return 2 * l + 1
+
+
+def do_part_a_alternative(num_elves):
+    """
+    Solve using solution to the Josephus trick
+
+    Move most significant bit to end
+
+    e.g.   41 = 101001
+     solution =  010011 = 19
+    """
+    binary_str = bin(num_elves)
+    return int(f'{binary_str[3:]}{binary_str[2]}', 2)
 
 
 def do_part_b_two_deques(num_elves):

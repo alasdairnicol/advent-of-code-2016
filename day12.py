@@ -7,6 +7,11 @@ def cpy(registers, location, x, y):
     return location + 1
 
 
+def add(registers, location, x, y):
+    registers[y] += registers.get(x, x)
+    return location + 1
+
+
 def inc(registers, location, x):
     registers[x] += 1
     return location + 1
@@ -29,6 +34,8 @@ def parse_line(line):
     words = line.split()
     if words[0] == "cpy":
         func = cpy
+    elif words[0] == "add":
+        func = add
     elif words[0] == "inc":
         func = inc
     elif words[0] == "dec":
@@ -41,6 +48,20 @@ def parse_line(line):
 
 def main():
     lines = list(read_input())
+
+    # Replace instructions with add to avoid looping
+    lines[6:9] = [
+        "add c d",
+        "cpy 0 c",
+        "jnz 0 0",  # no-op
+    ]
+
+    lines[10:13] = [
+        "add b a",
+        "cpy 0 b",
+        "jnz 0 0",  # no-op
+    ]
+
     instructions = [parse_line(line) for line in lines]
 
     part_a = run_program(instructions, c=0)

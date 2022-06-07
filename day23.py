@@ -82,7 +82,7 @@ def parse_line(line):
 def main():
     lines = list(read_input())
 
-    # Replace instructions with mult to avoid nested loops
+    # Replace instructions with mul to avoid nested loops
     lines[5:10] = [
         "mul d c",
         "add c a",

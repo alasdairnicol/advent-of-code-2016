@@ -9,12 +9,14 @@ def next_round_a(elves):
     last_place = [elves[-1]] if len(elves) % 2 else []
     return last_place + elves[0:-1:2]
 
+
 def highest_power_of_two(x):
     a = 1
     while x > 1:
         a <<= 1
         x >>= 1
     return a
+
 
 def do_part_a(num_elves):
     """
@@ -35,8 +37,7 @@ def do_part_a_alternative(num_elves):
     e.g.   41 = 101001
      solution =  010011 = 19
     """
-    binary_str = bin(num_elves)
-    return int(f'{binary_str[3:]}{binary_str[2]}', 2)
+    return int(f"{bin(num_elves)[3:]}1", 2)
 
 
 def do_part_b_two_deques(num_elves):
